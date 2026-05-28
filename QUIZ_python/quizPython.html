@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+  <meta charset="UTF-8">
+  <title>Python Quiz - Βασικές Δομές</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f7fb;
+      color: #222;
+      margin: 0;
+      padding: 20px;
+    }
+    h1 {
+      text-align: center;
+      color: #1a4a8f;
+    }
+    .quiz-container {
+      max-width: 900px;
+      margin: 0 auto;
+      background: #ffffff;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      padding: 20px 25px 30px;
+    }
+    .question-block {
+      border-bottom: 1px solid #ddd;
+      padding: 10px 0 15px;
+    }
+    .question-block:last-child {
+      border-bottom: none;
+    }
+    .question-title {
+      font-weight: bold;
+      color: #333;
+    }
+    .options {
+      margin-top: 6px;
+    }
+    .options label {
+      display: block;
+      margin: 3px 0;
+      cursor: pointer;
+    }
+    .options input {
+      margin-right: 6px;
+    }
+    button {
+      display: block;
+      margin: 20px auto 0;
+      padding: 10px 20px;
+      font-size: 16px;
+      background: #1a4a8f;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #163b70;
+    }
+    #score {
+      text-align: center;
+      font-weight: bold;
+      margin-top: 20px;
+      color: #1a4a8f;
+    }
+    #feedback {
+      margin-top: 15px;
+      font-size: 14px;
+      color: #c00000;  /* Κόκκινο feedback */
+      line-height: 1.5;
+    }
+    .feedback-item {
+      margin-bottom: 6px;
+    }
+    .correct {
+      color: #0a7a0a;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div class="quiz-container">
+    <h1>Python Quiz - Βασικές Δομές</h1>
+    <form id="quizForm">
+
+      <!-- Q1: if -->
+      <div class="question-block">
+        <div class="question-title">
+          1. Τι θα εμφανίσει ο παρακάτω κώδικας;<br>
+          <code>x = 5<br>if x &gt; 3:<br>&nbsp;&nbsp;print("A")</code>
+        </div>
+        <div class="options">
+          <label><input type="radio" name="q1" value="A"> A</label>
+          <label><input type="radio" name="q1" value="B"> B</label>
+          <label><input type="radio" name="q1" value="Nothing"> Δεν εμφανίζει τίποτα</label>
+          <label><input type="radio" name="q1" value="Error"> Σφάλμα</label>
+        </div>
+      </div>
+
+      <!-- Q2: if-else -->
+      <div class="question-block">
+        <div class="question-title">
+          2. Τι θα εμφανίσει ο παρακάτω κώδικας;<br>
+          <code>x = 2<br>if x % 2 == 0:<br>&nbsp;&nbsp;print("even")<br>else:<br>&nbsp;&nbsp;print("odd")</code>
+        </div>
+        <div class="options">
+          <label><input type="radio" name="q2" value="even"> even</label>
+          <label><input type="radio" name="q2" value="odd"> odd</label>
+          <label><input type="radio" name="q2" value="2"> 2</label>
+          <label><input type="radio" name="q2" value="Error"> Σφάλμα</label>
+        </div>
+      </div>
+
+      <!-- Q3: if-elif-else -->
+      <div class="question-block">
+        <div class="question-title">
+          3. Ποια λέξη χρησιμοποιείται στην Python ανάμεσα στο <code>if</code> και το <code>else</code> για επιπλέον συνθήκες;
+        </div>
+        <div class="options">
+          <label><input type="radio" name="q3" value="elseif"> elseif</label>
+          <label><input type="radio" name="q3" value="elif"> elif</label>
+          <label><input type="radio" name="q3" value="else if"> else if</label>
+          <label><input type="radio" name="q3" value="switch"> switch</label>
+        </div>
+      </div>
+
+      <!-- Q4: for range -->
+      <div class="question-block">
+        <div class="question-title">
+          4. Πόσα νούμερα θα τυπώσει ο παρακάτω κώδικας;<br>
+          <code>for i in range(0, 5):<br>&nbsp;&nbsp;print(i)</code>
+        </div>
+        <div class="options">
+          <label><input type="radio" name="q4" value="4"> 4</label>
+          <label><input type="radio" name="q4" value="5"> 5</label>
+          <label><input type="radio" name="q4" value="0"> 0</label>
+          <label><input type="radio" name="q4" value="Error"> Σφάλμα</label>
+        </div>
+      </div>
+
+      <!-- Q5: for over list -->
+      <div class="question-block">
+        <div class="question-title">
+          5. Τι τυπώνει;<br>
+          <code>numbers = [10, 20, 30]<br>for n in numbers:<br>&nbsp;&nbsp;print(n)</code>
+        </div>
+        <div class="options">
+          <label><input type="radio" name="q5" value="10-20-30"> 10, μετά 20, μετά 30</label>
+          <label><input type="radio" name="q5" value="index"> 0, 1, 2</label>
+          <label><input type="radio" name="q5" value="sum"> 60</label>
+          <label><input type="radio" name="q5" value="Error"> Σφάλμα</label>
+        </div>
+      </div>
+
+      <!-- Q6: while -->
+      <div class="question-block">
+        <div class="question-title">
+          6. Ποιος βρόχος είναι κατάλληλος όταν δεν ξέρουμε από πριν πόσες φορές θα επαναληφθεί;
+        </div>
+        <div class="options">
+          <label><input type="radio" name="q6" value="for"> for</label>
+          <label><input type="radio" name="q6" value="while"> while</label>
+          <label><input type="radio" name="q6" value="range"> range</label>
+          <label><input type="radio" name="q6" value="if"> if</label>
+        </div>
+      </div>
+
+      <!-- Q7: while example -->
+      <div class="question-block">
+        <div class="question-title">
+          7. Τι κάνει ο παρακάτω κώδικας;<br>
+          <code>i = 0<br>while i &lt; 3:<br>&nbsp;&nbsp;print(i)<br>&nbsp;&nbsp;i += 1</code>
+        </div>
+        <div class="options">
+          <label><input type="radio" name="q7" value="012"> Τυπώνει 0, 1, 2</label>
+          <label><input type="radio" name="q7" value="123"> Τυπώνει 1, 2, 3</label>
+          <label><input type="radio" name="q7" value="infinite"> Άπειρος βρόχος</label>
+          <label><input type="radio" name="q7" value="Error"> Σφάλμα</label>
+        </div>
+      </div>
+
+      <!-- Q8: range arguments -->
+      <div class="question-block">
+        <div class="question-title">
+          8. Ποια είναι η σωστή μορφή του <code>range</code> με αρχή, τέλος και βήμα;
+        </div>
+        <div class="options">
+          <label><input type="radio" name="q8" value="range2"> range(start, end)</label>
+          <label><input type="radio" name="q8" value="range3"> range(start, end, step)</label>
+          <label><input type="radio" name="q8" value="range1"> range(step)</label>
+          <label><input type="radio" name="q8" value="rangen"> range(start; end; step)</label>
+        </div>
+      </div>
+
+      <!-- Q9: range upper bound -->
+      <div class="question-block">
+        <div class="question-title">
+          9. Τι αριθμούς παράγει η εντολή <code>range(2, 7)</code>;
+        </div>
+        <div class="options">
+          <label><input type="radio" name="q9" value="2-6"> 2, 3, 4, 5, 6</label>
+          <label><input type="radio" name="q9" value="2-7"> 2, 3, 4, 5, 6, 7</label>
+          <label><input type="radio" name="q9" value="0-7"> 0 έως 7</label>
+          <label><input type="radio" name="q9" value="Error"> Σφάλμα</label>
+        </div>
+      </div>
+
+      <!-- Q10: list literal -->
+      <div class="question-block">
+        <div class="question-title">
+          10. Ποιος είναι ο σωστός τρόπος να δημιουργήσουμε μια λίστα με τα στοιχεία 1, 2, 3;
+        </div>
+        <div class="options">
+          <label><input type="radio" name="q10" value="square"> [1, 2, 3]</label>
+          <label><input type="radio" name="q10" value="round"> (1, 2, 3)</label>
+          <label><input type="radio" name="q10" value="curly"> {1, 2, 3}</label>
+          <label><input type="radio" name="q10" value="listfn"> list(1, 2, 3)</label>
+        </div>
+      </div>
+
+      <!-- Q11: list indexing -->
+      <div class="question-block">
+        <div class="question-title">
+          11. Τι θα τυπώσει;<br>
+          <code>nums = [5, 10, 15]<br>print(nums[1])</code>
+        </div>
+        <div class="options">
+          <label><input type="radio" name="q11" value="5"> 5</label>
+          <label><input type="radio" name="q11" value="10"> 10</label>
+          <label><input type="radio" name="q11" value="15"> 15</label>
+          <label><input type="radio" name="q11" value="Error"> Σφάλμα</label>
+        </div>
+      </div>
+
+      <!-- Q12: list append -->
+      <div class="question-block">
+        <div class="question-title">
+          12. Ποια μέθοδος προσθέτει ένα στοιχείο στο τέλος μιας λίστας;
+        </div>
+        <div class="options">
+          <label><input type="radio" name="q12" value="add"> add()</label>
+          <label><input type="radio" name="q12" value="append"> append()</label>
+          <label><input type="radio" name="q12" value="push"> push()</label>
+          <label><input type="radio" name="q12" value="insert"> insertEnd()</label>
+        </div>
+      </div>
+
+      <!-- Q13: string indexing -->
+      <div class="question-block">
+        <div class="question-title">
+          13. Τι θα τυπώσει;<br>
+          <code>s = "python"<br>print(s[0])</code>
+        </div>
+        <div class="options">
+          <label><input type="radio" name="q13" value="p"> p</label>
+          <label><input type="radio" name="q13" value="y"> y</label>
+          <label><input type="radio" name="q13" value="n"> n</label>
+          <label><input type="radio" name="q13" value="Error"> Σφάλμα</label>
+        </div>
+      </div>
+
+      <!-- Q14: string length -->
+      <div class="question-block">
+        <div class="question-title">
+          14. Ποια συνάρτηση δίνει το μήκος (αριθμό χαρακτήρων) μιας συμβολοσειράς;
+        </div>
+        <div class="options">
+          <label><input type="radio" name="q14" value="size"> size()</label>
+          <label><input type="radio" name="q14" value="length"> length()</label>
+          <label><input type="radio" name="q14" value="len"> len()</label>
+          <label><input type="radio" name="q14" value="count"> count()</label>
+        </div>
+      </div>
+
+      <!-- Q15: string immutability -->
+      <div class="question-block">
+        <div class="question-title">
+          15. Οι συμβολοσειρές (strings) στην Python είναι:
+        </div>
+        <div class="options">
+          <label><input type="radio" name="q15" value="mutable"> μεταβλητές (mutable)</label>
+          <label><input type="radio" name="q15" value="immutable"> αμετάβλητες (immutable)</label>
+          <label><input type="radio" name="q15" value="sometimes"> μερικές φορές mutable</label>
+          <label><input type="radio" name="q15" value="none"> τίποτα από τα παραπάνω</label>
+        </div>
+      </div>
+
+      <!-- Q16: tuple literal -->
+      <div class="question-block">
+        <div class="question-title">
+          16. Πώς δημιουργούμε ένα tuple με τα στοιχεία 1, 2, 3;
+        </div>
+        <div class="options">
+          <label><input type="radio" name="q16" value="square"> [1, 2, 3]</label>
+          <label><input type="radio" name="q16" value="round"> (1, 2, 3)</label>
+          <label><input type="radio" name="q16" value="curly"> {1, 2, 3}</label>
+          <label><input type="radio" name="q16" value="angle"> &lt;1, 2, 3&gt;</label>
+        </div>
+      </div>
+
+      <!-- Q17: tuple immutability -->
+      <div class="question-block">
+        <div class="question-title">
+          17. Τι ισχύει για τα tuples σε σχέση με τις λίστες;
+        </div>
+        <div class="options">
+          <label><input type="radio" name="q17" value="mutable"> Τα tuples είναι mutable όπως οι λίστες</label>
+          <label><input type="radio" name="q17" value="immutable"> Τα tuples είναι immutable</label>
+          <label><input type="radio" name="q17" value="fasterlist"> Τα tuples είναι πάντα πιο αργά</label>
+          <label><input type="radio" name="q17" value="none"> Καμία διαφορά</label>
+        </div>
+      </div>
+
+      <!-- Q18: tuple indexing -->
+      <div class="question-block">
+        <div class="question-title">
+          18. Τι θα τυπώσει;<br>
+          <code>t = (10, 20, 30)<br>print(t[2])</code>
+        </div>
+        <div class="options">
+          <label><input type="radio" name="q18" value="10"> 10</label>
+          <label><input type="radio" name="q18" value="20"> 20</label>
+          <label><input type="radio" name="q18" value="30"> 30</label>
+          <label><input type="radio" name="q18" value="Error"> Σφάλμα</label>
+        </div>
+      </div>
+
+      <!-- Q19: random import -->
+      <div class="question-block">
+        <div class="question-title">
+          19. Ποια εντολή εισάγει το module για τυχαίους αριθμούς;
+        </div>
+        <div class="options">
+          <label><input type="radio" name="q19" value="importmath"> import math</label>
+          <label><input type="radio" name="q19" value="importrandom"> import random</label>
+          <label><input type="radio" name="q19" value="importrand"> import rand</label>
+          <label><input type="radio" name="q19" value="none"> Δεν χρειάζεται import</label>
+        </div>
+      </div>
+
+      <!-- Q20: random randint -->
+      <div class="question-block">
+        <div class="question-title">
+          20. Ποια συνάρτηση δίνει τυχαίο ακέραιο ανάμεσα σε 1 και 10 συμπεριλαμβανομένων;
+        </div>
+        <div class="options">
+          <label><input type="radio" name="q20" value="randint"> random.randint(1, 10)</label>
+          <label><input type="radio" name="q20" value="random"> random.random(1, 10)</label>
+          <label><input type="radio" name="q20" value="range"> range(1, 10)</label>
+          <label><input type="radio" name="q20" value="choice"> random.choice(1, 10)</label>
+        </div>
+      </div>
+
+      <!-- Q21: random random -->
+      <div class="question-block">
+        <div class="question-title">
+          21. Τι επιστρέφει η <code>random.random()</code>;
+        </div>
+        <div class="options">
+          <label><input type="radio" name="q21" value="0-1"> Πραγματικό στο διάστημα [0.0, 1.0)</label>
+          <label><input type="radio" name="q21" value="int"> Ακέραιο 0 ή 1</label>
+          <label><input type="radio" name="q21" value="1-10"> Ακέραιο 1 έως 10</label>
+          <label><input type="radio" name="q21" value="Error"> Σφάλμα</label>
+        </div>
+      </div>
+
+      <!-- Q22: if with == -->
+      <div class="question-block">
+        <div class="question-title">
+          22. Ποιος τελεστής χρησιμοποιείται για σύγκριση ισότητας στην Python;
+        </div>
+        <div class="options">
+          <label><input type="radio" name="q22" value="="> =</label>
+          <label><input type="radio" name="q22" value="=="> ==</label>
+          <label><input type="radio" name="q22" value="==="> ===</label>
+          <label><input type="radio" name="q22" value="eq"> eq</label>
+        </div>
+      </div>
+
+      <!-- Q23: nested if -->
+      <div class="question-block">
+        <div class="question-title">
+          23. Πώς ονομάζονται τα <code>if</code> μέσα σε άλλα <code>if</code>;
+        </div>
+        <div class="options">
+          <label><input type="radio" name="q23" value="nested"> εμφωλιασμένα (nested)</label>
+          <label><input type="radio" name="q23" value="parallel"> παράλληλα</label>
+          <label><input type="radio" name="q23" value="looped"> looped</label>
+          <label><input type="radio" name="q23" value="none"> δεν υπάρχει όρος</label>
+        </div>
+      </div>
+
+      <!-- Q24: for with range step -->
+      <div class="question-block">
+        <div class="question-title">
+          24. Τι θα τυπώσει;<br>
+          <code>for i in range(1, 10, 3):<br>&nbsp;&nbsp;print(i)</code>
+        </div>
+        <div class="options">
+          <label><input type="radio" name="q24" value="1-4-7"> 1, 4, 7</label>
+          <label><input type="radio" name="q24" value="1-3-5-7-9"> 1, 3, 5, 7, 9</label>
+          <label><input type="radio" name="q24" value="1-10"> 1 έως 10</label>
+          <label><input type="radio" name="q24" value="Error"> Σφάλμα</label>
+        </div>
+      </div>
+
+      <!-- Q25: break -->
+      <div class="question-block">
+        <div class="question-title">
+          25. Ποια εντολή χρησιμοποιείται για να σταματήσει ένας βρόχος πρόωρα;
+        </div>
+        <div class="options">
+          <label><input type="radio" name="q25" value="stop"> stop</label>
+          <label><input type="radio" name="q25" value="break"> break</label>
+          <label><input type="radio" name="q25" value="exit"> exit</label>
+          <label><input type="radio" name="q25" value="continue"> continue</label>
+        </div>
+      </div>
+
+      <!-- Q26: continue -->
+      <div class="question-block">
+        <div class="question-title">
+          26. Τι κάνει η εντολή <code>continue</code> μέσα σε έναν βρόχο;
+        </div>
+        <div class="options">
+          <label><input type="radio" name="q26" value="skip"> Παραλείπει την υπόλοιπη επανάληψη και πάει στην επόμενη</label>
+          <label><input type="radio" name="q26" value="stop"> Σταματάει τελείως τον βρόχο</label>
+          <label><input type="radio" name="q26" value="restart"> Ξεκινάει το πρόγραμμα από την αρχή</label>
+          <label><input type="radio" name="q26" value="none"> Δεν κάνει τίποτα</label>
+        </div>
+      </div>
+
+      <!-- Q27: list vs tuple -->
+      <div class="question-block">
+        <div class="question-title">
+          27. Ποια είναι η βασική διαφορά ανάμεσα σε λίστα και tuple;
+        </div>
+        <div class="options">
+          <label><input type="radio" name="q27" value="syntaxonly"> Διαφέρουν μόνο στη σύνταξη</label>
+          <label><input type="radio" name="q27" value="mutable"> Οι λίστες είναι mutable, τα tuples όχι</label>
+          <label><input type="radio" name="q27" value="len"> Τα tuples δεν έχουν μήκος</label>
+          <label><input type="radio" name="q27" value="none"> Καμία διαφορά</label>
+        </div>
+      </div>
+
+      <!-- Q28: string slicing -->
+      <div class="question-block">
+        <div class="question-title">
+          28. Τι θα τυπώσει;<br>
+          <code>s = "hello"<br>print(s[1:4])</code>
+        </div>
+        <div class="options">
+          <label><input type="radio" name="q28" value="ell"> ell</label>
+          <label><input type="radio" name="q28" value="hel"> hel</label>
+          <label><input type="radio" name="q28" value="llo"> llo</label>
+          <label><input type="radio" name="q28" value="Error"> Σφάλμα</label>
+        </div>
+      </div>
+
+      <!-- Q29: len(range) -->
+      <div class="question-block">
+        <div class="question-title">
+          29. Ποια είναι η τιμή του <code>len(range(0, 10, 2))</code>;
+        </div>
+        <div class="options">
+          <label><input type="radio" name="q29" value="5"> 5</label>
+          <label><input type="radio" name="q29" value="10"> 10</label>
+          <label><input type="radio" name="q29" value="2"> 2</label>
+          <label><input type="radio" name="q29" value="Error"> Σφάλμα</label>
+        </div>
+      </div>
+
+      <!-- Q30: random.choice -->
+      <div class="question-block">
+        <div class="question-title">
+          30. Ποια συνάρτηση επιλέγει τυχαίο στοιχείο από λίστα <code>items</code>;
+        </div>
+        <div class="options">
+          <label><input type="radio" name="q30" value="choice"> random.choice(items)</label>
+          <label><input type="radio" name="q30" value="randitem"> random.item(items)</label>
+          <label><input type="radio" name="q30" value="randrange"> random.randrange(items)</label>
+          <label><input type="radio" name="q30" value="randint"> random.randint(items)</label>
+        </div>
+      </div>
+
+      <button type="button" onclick="gradeQuiz()">Υποβολή Quiz</button>
+    </form>
+
+    <div id="score"></div>
+    <div id="feedback"></div>
+  </div>
+
+  <script>
+    const correctAnswers = {
+      q1: "A",
+      q2: "even",
+      q3: "elif",
+      q4: "5",
+      q5: "10-20-30",
+      q6: "while",
+      q7: "012",
+      q8: "range3",
+      q9: "2-6",
+      q10: "square",
+      q11: "10",
+      q12: "append",
+      q13: "p",
+      q14: "len",
+      q15: "immutable",
+      q16: "round",
+      q17: "immutable",
+      q18: "30",
+      q19: "importrandom",
+      q20: "randint",
+      q21: "0-1",
+      q22: "==",
+      q23: "nested",
+      q24: "1-4-7",
+      q25: "break",
+      q26: "skip",
+      q27: "mutable",
+      q28: "ell",
+      q29: "5",
+      q30: "choice"
+    };
+
+    const feedbackTexts = {
+      q1: '1: if x &gt; 3, το 5 είναι μεγαλύτερο από 3, άρα τυπώνει "A".',
+      q2: '2: 2 % 2 == 0, άρα η συνθήκη είναι αληθής και τυπώνει "even".',
+      q3: '3: Η σωστή λέξη-κλειδί είναι "elif" για επιπλέον συνθήκες.',
+      q4: '4: Το range(0,5) παράγει 0,1,2,3,4 (5 αριθμοί).',
+      q5: '5: Η for διατρέχει τα στοιχεία της λίστας: 10, 20, 30.',
+      q6: '6: Ο while είναι κατάλληλος όταν δεν ξέρουμε πόσες επαναλήψεις θα χρειαστούν.',
+      q7: '7: Η μεταβλητή i παίρνει 0,1,2 και αυξάνεται μέχρι να φτάσει 3.',
+      q8: '8: Η πλήρης μορφή είναι range(start, end, step).',
+      q9: '9: range(2,7) παράγει 2,3,4,5,6 (το 7 δεν περιλαμβάνεται).',
+      q10: '10: Οι λίστες χρησιμοποιούν αγκύλες: [1, 2, 3].',
+      q11: '11: Η λίστα ξεκινάει από θέση 0, άρα nums[1] είναι 10.',
+      q12: '12: Η append() προσθέτει στοιχείο στο τέλος της λίστας.',
+      q13: '13: s[0] είναι ο πρώτος χαρακτήρας "p".',
+      q14: '14: Η len() επιστρέφει το μήκος μιας συμβολοσειράς.',
+      q15: '15: Τα strings στην Python είναι αμετάβλητα (immutable).',
+      q16: '16: Τα tuples χρησιμοποιούν παρενθέσεις: (1, 2, 3).',
+      q17: '17: Τα tuples είναι immutable σε αντίθεση με τις λίστες.',
+      q18: '18: t[2] είναι το τρίτο στοιχείο του tuple, δηλαδή 30.',
+      q19: '19: Το module για τυχαίους αριθμούς είναι το random.',
+      q20: '20: random.randint(1,10) δίνει τυχαίο ακέραιο από 1 έως 10.',
+      q21: '21: random.random() επιστρέφει float στο [0.0, 1.0).',
+      q22: '22: Ο τελεστής ισότητας είναι ο διπλός ίσος: ==.',
+      q23: '23: Τα if μέσα σε άλλα if λέγονται εμφωλιασμένα (nested).',
+      q24: '24: range(1,10,3) δίνει 1,4,7.',
+      q25: '25: Η break σταματάει τον βρόχο.',
+      q26: '26: Η continue παραλείπει τα υπόλοιπα της τρέχουσας επανάληψης.',
+      q27: '27: Οι λίστες είναι mutable, τα tuples όχι.',
+      q28: '28: s[1:4] είναι οι χαρακτήρες από θέση 1 έως πριν τη 4: "ell".',
+      q29: '29: range(0,10,2) δίνει 0,2,4,6,8 (5 στοιχεία).',
+      q30: '30: random.choice(items) επιλέγει τυχαίο στοιχείο από λίστα.'
+    };
+
+    function gradeQuiz() {
+      const form = document.getElementById('quizForm');
+      let score = 0;
+      let total = 30;
+      let feedbackDiv = document.getElementById('feedback');
+      feedbackDiv.innerHTML = "";
+
+      for (let q in correctAnswers) {
+        const userAnswer = form[q] ? form[q].value : null;
+        const correct = correctAnswers[q];
+
+        let msg = "";
+        if (!userAnswer) {
+          msg = `Δεν απάντησες στην ερώτηση ${q.substring(1)}. `;
+        } else if (userAnswer === correct) {
+          score++;
+          msg = `Ερώτηση ${q.substring(1)}: Σωστό! `;
+        } else {
+          msg = `Ερώτηση ${q.substring(1)}: Λάθος. `;
+        }
+        msg += feedbackTexts[q];
+
+        const p = document.createElement('div');
+        p.className = "feedback-item";
+        p.textContent = msg;
+        feedbackDiv.appendChild(p);
+      }
+
+      const scoreDiv = document.getElementById('score');
+      scoreDiv.textContent = `Το σκορ σου: ${score} / ${total}`;
+    }
+  </script>
+</body>
+</html>
